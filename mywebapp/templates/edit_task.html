@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<h1>Тапсырманы өңдеу</h1>
+<form method="POST" action="{{ url_for('edit_task', id=task.id) }}">
+    <div class="form-group">
+        <label for="title">Атауы:</label>
+        <input type="text" id="title" name="title" class="form-control" value="{{ task.title }}">
+        </div>
+    <div class="form-group">
+        <label for="description">Сипаттама:</label>
+        <textarea id="description" name="description" class="form-control">{{ task.description }}</textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Тапсырманы жаңарту</button>
+        </form>
+        {% endblock %}

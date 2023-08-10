@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+    <h1>Тағайындалған тапсырмалар</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Тапсырма</th>
+                <th scope="col">Тағайындалған</th>
+                <th scope="col">Күйі</th>
+                <th scope="col">Әрекет</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for task in user_tasks %}
+            <tr>
+                <th scope="row">{{ task.id }}</th>
+                <td>{{ task.title }}</td>
+                <td>{{ task.user.username }}</td>
+                <td>
+                    {% if task.completed %}
+                        <span class="badge badge-success">Аяқталды</span>
+                    {% else %}
+                        <span class="badge badge-secondary">Орындалуда</span>
+                    {% endif %}
+                </td>
+                <td>
+                    <form action="{{ url_for('delete_task', id=task.id) }}" method="POST" style="display: inline;">
+                        <input type="hidden" name="status" value="deleted">
+                        <button type="submit" class="btn btn-danger">Жою</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

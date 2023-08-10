@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Add Task{% endblock %}
+
+{% block content %}
+<h1>Тапсырма қосу</h1>
+<form method="POST" action="{{ url_for('add_task') }}">
+    <div class="form-group">
+        <label for="title">Атауы:</label>
+        <input type="text" id="title" name="title" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="description">Сипаттама:</label>
+        <textarea id="description" name="description" class="form-control"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Тапсырманы қосу</button>
+</form>
+{% endblock %}

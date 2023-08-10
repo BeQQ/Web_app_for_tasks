@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Assign Task{% endblock %}
+
+{% block content %}
+<h1>Тапсырманы тағайындау</h1>
+<form method="POST" action="{{ url_for('assign_task') }}">
+    <div class="form-group">
+        <label for="user">Пайдаланушы:</label>
+        <input type="email" id="user" name="email" class="form-control" required>
+            {% for user in users %}
+            <option value="{{ user.id }}">{{ user.email }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="task">Тапсырма:</label>
+        <select id="task" name="task" class="form-control" required>
+            {% for task in tasks %}
+            <option value="{{ task.id }}">{{ task.title }}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Тапсырманы тағайындау</button>
+</form>
+{% endblock %}
